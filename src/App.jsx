@@ -25,6 +25,7 @@ function App() {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/product/:productId" element={<ProductDetails />} />
         <Route path="*" element={<NotFoundPage />} />
+        
       </Routes>
       <Footer />
     </BrowserRouter>
