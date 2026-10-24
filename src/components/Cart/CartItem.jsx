@@ -1,7 +1,10 @@
+
 import { Minus, Plus, Trash2 } from "lucide-react";
 
 export default function CartItem({ item }) {
-  const product = item.product;
+  if (!item) return null;
+
+  const product = item.product ?? item;
 
   return (
     <article className="grid grid-cols-[100px_minmax(0,1fr)] gap-4 border-b border-[#E7EDF8] py-5 sm:grid-cols-[140px_minmax(0,1fr)] md:grid-cols-[1fr_1.5fr_1fr_0.7fr] md:items-center">
@@ -9,7 +12,7 @@ export default function CartItem({ item }) {
       <div>
         <img
           src={product.imageUrl || "/images/placeholder.jpg"}
-          alt={product.name}
+          alt={product.name || "Product"}
           className="h-[110px] w-full rounded-xl object-cover sm:h-[130px]"
         />
       </div>
@@ -17,8 +20,9 @@ export default function CartItem({ item }) {
       {/* Product Information */}
       <div className="min-w-0">
         <h3 className="mb-2 text-base font-bold text-[#101D3B]">
-          {product.name}
+          {product.name} 
         </h3>
+        
 
         <p className="text-sm leading-6 text-[#8495B3]">
           {product.description || "No description available"}
@@ -27,6 +31,7 @@ export default function CartItem({ item }) {
 
       {/* Quantity */}
       <div className="flex items-center gap-2">
+        <Trash2 size={17} />
         <button
           type="button"
           disabled
@@ -37,7 +42,7 @@ export default function CartItem({ item }) {
         </button>
 
         <span className="min-w-6 text-center text-sm font-semibold">
-          {item.quantity}
+          {item.quantity ?? 1}
         </span>
 
         <button
@@ -53,7 +58,10 @@ export default function CartItem({ item }) {
       {/* Price */}
       <div className="flex items-center justify-between gap-3 md:block">
         <strong className="text-lg font-bold text-[#101D3B]">
-          ${(Number(product.price) * item.quantity).toFixed(2)}
+          $
+          {(
+            Number(product.price) * (item.quantity ?? 1)
+          ).toFixed(2)}
         </strong>
 
         <button
@@ -62,7 +70,7 @@ export default function CartItem({ item }) {
           aria-label="Remove product"
           className="text-[#8495B3] disabled:opacity-50"
         >
-          <Trash2 size={17} />
+          
         </button>
       </div>
     </article>

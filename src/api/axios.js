@@ -1,7 +1,7 @@
-import axios from "./axios";
+import axios from "axios";
 
-export const getCart = async () => {
-  const { data } = await axios.get("/cart");
+const api = axios.create({
+  baseURL: "https://test-backend.abdulrahman-hares.com/api",
+});
 
-  return data;
-};
+export default api;

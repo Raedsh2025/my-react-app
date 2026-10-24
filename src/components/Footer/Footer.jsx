@@ -1,4 +1,11 @@
 import { Link } from "react-router-dom";
+import {
+  ArrowRight,
+  AtSign,
+  BriefcaseBusiness,
+  Camera,
+  MessageCircle,
+} from "lucide-react";
 import logo from "../../assets/logo.svg";
 
 const aboutLinks = [
@@ -16,10 +23,14 @@ const supportLinks = [
 ];
 
 const socialLinks = [
-  { label: "Facebook", href: "https://www.facebook.com" },
-  { label: "Instagram", href: "https://www.instagram.com" },
-  { label: "Twitter", href: "https://twitter.com" },
-  { label: "LinkedIn", href: "https://www.linkedin.com" },
+  { label: "Facebook", href: "https://www.facebook.com", icon: AtSign },
+  { label: "Instagram", href: "https://www.instagram.com", icon: Camera },
+  { label: "Twitter", href: "https://twitter.com", icon: MessageCircle },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com",
+    icon: BriefcaseBusiness,
+  },
 ];
 
 function FooterLink({ children, to }) {
@@ -35,9 +46,9 @@ function FooterLink({ children, to }) {
 
 function Footer() {
   return (
-    <footer className="mt-20 border-t border-gray-200 bg-white">
-      <div className="container mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:py-16">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[minmax(260px,1.5fr)_repeat(3,minmax(130px,1fr))]">
+    <footer className=" mt-20 ">
+      <div className=" max-w-7xl px-4 py-12 sm:px-6 lg:py-16">
+        <div className="container mx-auto grid gap-10 sm:grid-cols-2 lg:grid-cols-[minmax(260px,1.5fr)_repeat(3,minmax(130px,1fr))]">
           <div className="max-w-md">
             <Link to="/" aria-label="Furniture store home">
               <img src={logo} alt="Furniture store" className="h-9 w-auto" />
@@ -62,9 +73,11 @@ function Footer() {
               />
               <button
                 type="submit"
-                className="h-12 rounded-full bg-black px-6 text-sm font-medium text-white transition-colors hover:bg-[#C900C1] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C900C1]"
+                aria-label="Subscribe to newsletter"
+                className="flex h-12 items-center justify-center gap-2 rounded-full bg-black px-6 text-sm font-medium text-white transition-colors hover:bg-[#C900C1] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C900C1]"
               >
                 Subscribe
+                <ArrowRight size={16} aria-hidden="true" />
               </button>
             </form>
             <p className="mt-4 text-xs leading-5 text-gray-500">
@@ -98,21 +111,23 @@ function Footer() {
 
           <div className="flex flex-col gap-4">
             <h2 className="text-sm font-semibold text-gray-900">Follow Us</h2>
-            {socialLinks.map((link) => (
+            {socialLinks.map(({ label, href, icon: Icon }) => (
               <a
-                key={link.label}
-                href={link.href}
+                key={label}
+                href={href}
                 target="_blank"
                 rel="noreferrer"
-                className="text-sm text-gray-500 transition-colors hover:text-[#C900C1] focus-visible:outline-2 focus-visible:outline-[#C900C1]"
+                aria-label={label}
+                className="flex items-center gap-3 text-sm text-gray-500 transition-colors hover:text-[#C900C1] focus-visible:outline-2 focus-visible:outline-[#C900C1]"
               >
-                {link.label}
+                <Icon size={16} strokeWidth={1.8} aria-hidden="true" />
+                <span>{label}</span>
               </a>
             ))}
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-4 border-t border-gray-200 pt-6 text-sm text-gray-500 sm:flex-row sm:items-center sm:justify-between">
+        <div className="container mx-auto mt-12 flex flex-col gap-4 pt-6 text-sm text-gray-500 sm:flex-row sm:items-center sm:justify-between">
           <p>© 2023 GFirnuture. All rights reserved.</p>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
             <Link to="/contact" className="hover:text-[#C900C1]">

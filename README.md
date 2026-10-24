@@ -1,21 +1,127 @@
-# React + Vite
+<div dir="rtl">
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# GFurniture
 
-Currently, two official plugins are available:
+منصة إلكترونية متخصصة في عرض وبيع الأثاث المنزلي، تم تصميمها لتقديم تجربة
+تسوق سهلة وواضحة تبدأ من استكشاف المنتجات وتنتهي بإتمام الطلب.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+> **المشروع من إعدادي وتطويري، بمساعدة المهندس عبد الرحمن حارس ومنظمة سند.**
 
-## React Compiler
+## فكرة المنصة
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+تساعد المنصة المستخدم على:
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
+- استكشاف الأثاث حسب الأقسام والغرف.
+- البحث عن المنتجات والوصول إلى تفاصيلها.
+- تصفية المنتجات حسب التصنيف والسعر والغرفة والخامة.
+- مشاهدة صور المنتج ووصفه وسعره.
+- إضافة المنتجات إلى سلة المشتريات.
+- مراجعة محتوى السلة والإجمالي.
+- الانتقال إلى صفحة Checkout لإدخال بيانات الشحن والدفع.
 
-## Expanding the ESLint configuration
+## طريقة عمل المنصة
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-   raed
-   
+1. يبدأ المستخدم من الصفحة الرئيسية أو صفحة المتجر.
+2. يعرض المتجر المنتجات القادمة من الـ API، مع استخدام بيانات محلية احتياطية
+   عند الحاجة.
+3. يمكن للمستخدم البحث عن منتج أو استخدام الفلاتر والترتيب حسب السعر.
+4. عند اختيار منتج، ينتقل المستخدم إلى صفحة التفاصيل.
+5. يمكن إضافة المنتج إلى السلة، ويتم حفظ حالة السلة باستخدام Zustand.
+6. تعرض صفحة السلة المنتجات والكميات والأسعار والإجمالي.
+7. ينتقل المستخدم من السلة إلى صفحة Checkout لإتمام بيانات الطلب.
+
+## الصفحات الرئيسية
+
+- الصفحة الرئيسية.
+- صفحة المتجر وجميع المنتجات.
+- صفحات التصنيفات مثل الأثاث المنزلي وغرفة المعيشة.
+- صفحة تفاصيل المنتج.
+- صفحة سلة المشتريات.
+- صفحة Checkout.
+- صفحات About وContact.
+- صفحة Not Found للتعامل مع الروابط غير الموجودة.
+
+## التقنيات والأدوات المستخدمة
+
+- **React** لبناء واجهة المستخدم.
+- **Vite** لتشغيل المشروع وبناء نسخة الإنتاج.
+- **React Router** لإدارة التنقل بين الصفحات.
+- **Tailwind CSS** لتنسيق الواجهات وتصميمها بشكل Responsive.
+- **Zustand** لإدارة حالة سلة المشتريات.
+- **TanStack React Query** لجلب بيانات المنتجات وإدارتها.
+- **Axios** للتعامل مع REST API.
+- **Lucide React** للأيقونات.
+- **shadcn/ui و Base UI** لبعض مكوّنات الواجهة.
+- **ESLint** لفحص جودة الكود واكتشاف الأخطاء.
+
+## المعرفة والمفاهيم المستخدمة
+
+يعتمد المشروع على مجموعة من المفاهيم العملية في تطوير تطبيقات React، منها:
+
+- بناء مكوّنات قابلة لإعادة الاستخدام.
+- فصل الصفحات عن مكوّنات الواجهة.
+- تنظيم المشروع حسب المسؤولية والوظيفة.
+- استخدام React Hooks مثل `useState` و`useEffect`.
+- إدارة البيانات غير المتزامنة باستخدام React Query.
+- إدارة الحالة المشتركة باستخدام Zustand.
+- إنشاء فلاتر وبحث وترتيب للمنتجات.
+- تصميم واجهات متجاوبة مع الشاشات المختلفة.
+- استخدام React Router مع روابط ديناميكية للمنتجات.
+- التعامل مع حالات التحميل والخطأ وعدم وجود البيانات.
+- ربط المنتجات بسلة المشتريات وإدارة الإجماليات.
+- تحسين الوصول باستخدام `aria-label` وخصائص HTML المناسبة.
+- التحقق من الكود باستخدام ESLint وبناء نسخة الإنتاج باستخدام Vite.
+
+## تشغيل المشروع
+
+### المتطلبات
+
+- Node.js
+- npm
+
+### تثبيت الحزم
+
+```bash
+npm install
+```
+
+### تشغيل بيئة التطوير
+
+```bash
+npm run dev
+```
+
+### بناء نسخة الإنتاج
+
+```bash
+npm run build
+```
+
+### تشغيل ESLint
+
+```bash
+npm run lint
+```
+
+## هيكل المشروع
+
+```text
+src/
+├── api/              # طلبات API
+├── assets/           # الصور والملفات البصرية
+├── components/       # مكوّنات الواجهة القابلة لإعادة الاستخدام
+├── hooks/            # React Hooks الخاصة بالبيانات
+├── pages/            # صفحات التطبيق
+├── Store/            # الحالة المشتركة مثل سلة المشتريات
+├── App.jsx           # إعداد المسارات الرئيسية
+└── main.jsx          # نقطة تشغيل التطبيق
+```
+
+## ملاحظات
+
+- يتم استخدام API لجلب المنتجات مع وجود بيانات محلية احتياطية.
+- الفلاتر والبحث والترتيب تعمل على المنتجات المعروضة داخل صفحة المتجر.
+- صفحة Checkout مرتبطة مباشرة ببيانات السلة الحالية.
+- التصميم يدعم الشاشات الكبيرة والمتوسطة والصغيرة.
+
+</div>
